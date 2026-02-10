@@ -60,9 +60,28 @@ echo.
 if %ERRORLEVEL% equ 0 (
     echo.
     echo [SUCCESS] Project pushed successfully! 🚀
-) else (
-    echo.
-    echo [ERROR] Failed to push. Please check your internet connection or GitHub credentials.
+    goto :end
 )
 
+echo.
+echo [WARNING] The push failed. This usually happens if the remote repository is not empty.
+echo.
+set /p FORCE="Do you want to FORCE overwrite the remote repository? (Y/N): "
+if /i "%FORCE%"=="Y" (
+    echo.
+    echo [INFO] Force pushing...
+    %GIT_CMD% push -f origin main
+    if %ERRORLEVEL% equ 0 (
+        echo.
+        echo [SUCCESS] Project force pushed successfully! 🚀
+    ) else (
+        echo.
+        echo [ERROR] Force push failed. Check your connection or permissions.
+    )
+) else (
+    echo.
+    echo [INFO] cancelled.
+)
+
+:end
 pause
