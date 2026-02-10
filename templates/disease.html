@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ disease.name }} — PawScan AI</title>
+    <meta name="description"
+        content="Learn about {{ disease.name }} in dogs: symptoms, causes, treatment, and prevention tips.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">PawScan <span class="logo-ai">AI</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#how-it-works" class="nav-link">How It Works</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Disease Detail -->
+    <section class="disease-section">
+        <div class="disease-container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span class="breadcrumb-sep">›</span>
+                <span>{{ disease.name }}</span>
+            </div>
+
+            <!-- Disease Header -->
+            <div class="disease-header glass-card">
+                <div class="disease-header-content">
+                    <h1 class="disease-title">{{ disease.name }}</h1>
+                    <div class="disease-tags">
+                        <span class="tag tag-severity">{{ disease.severity }}</span>
+                        <span class="tag tag-recovery">Recovery: {{ disease.recovery_time[:40] }}</span>
+                        <span class="tag tag-contagious">{{ disease.contagious[:40] }}</span>
+                    </div>
+                    <p class="disease-overview">{{ disease.overview }}</p>
+                </div>
+            </div>
+
+            <!-- Info Cards Grid -->
+            <div class="disease-grid">
+                <!-- Symptoms -->
+                <div class="info-card glass-card">
+                    <div class="info-card-header">
+                        <span class="info-icon">🩺</span>
+                        <h2>Symptoms</h2>
+                    </div>
+                    <ul class="info-list">
+                        {% for symptom in disease.symptoms %}
+                        <li>
+                            <span class="list-bullet">•</span>
+                            {{ symptom }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Causes -->
+                <div class="info-card glass-card">
+                    <div class="info-card-header">
+                        <span class="info-icon">🔍</span>
+                        <h2>Causes</h2>
+                    </div>
+                    <ul class="info-list">
+                        {% for cause in disease.causes %}
+                        <li>
+                            <span class="list-bullet">•</span>
+                            {{ cause }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Treatment (Full Width) -->
+                <div class="info-card glass-card full-width">
+                    <div class="info-card-header">
+                        <span class="info-icon">💊</span>
+                        <h2>Treatment</h2>
+                    </div>
+                    <ul class="info-list treatment-list">
+                        {% for treatment in disease.treatment %}
+                        <li>
+                            <span class="list-number">{{ loop.index }}</span>
+                            {{ treatment }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Prevention (Full Width) -->
+                <div class="info-card glass-card full-width">
+                    <div class="info-card-header">
+                        <span class="info-icon">🛡️</span>
+                        <h2>Prevention</h2>
+                    </div>
+                    <ul class="info-list">
+                        {% for tip in disease.prevention %}
+                        <li>
+                            <span class="list-bullet">✓</span>
+                            {{ tip }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Action Section -->
+            <div class="disease-actions">
+                <a href="/" class="btn-secondary">
+                    <span>📸</span> Upload Another Image
+                </a>
+                <button class="btn-primary" onclick="toggleChat()">
+                    <span>🤖</span> Ask AI About This Disease
+                </button>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer glass-card">
+                <p>⚠️ <strong>Important Disclaimer:</strong> This information is provided for educational purposes only
+                    and should not replace professional veterinary advice. Always consult a licensed veterinarian for
+                    proper diagnosis and treatment of your pet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    {% include 'chat_widget.html' %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <p class="footer-note">⚠️ This tool is for educational purposes only. Always consult a licensed
+                    veterinarian.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

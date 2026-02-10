@@ -1,0 +1,57 @@
+<!-- Chat Widget -->
+<div class="chat-widget" id="chatWidget">
+    <!-- Chat Toggle Button -->
+    <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+        <span class="chat-toggle-icon" id="chatToggleIcon">🤖</span>
+        <span class="chat-pulse"></span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">🐾</div>
+                <div>
+                    <h4>PawScan Assistant</h4>
+                    <span class="chat-status">Online • Ask about dog skin diseases</span>
+                </div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot-message">
+                <div class="message-avatar">🐾</div>
+                <div class="message-content">
+                    <p>Hi! I'm your PawScan AI Assistant. 🐕</p>
+                    <p>I can answer questions about dog skin diseases, symptoms, treatments, and prevention. How can I
+                        help you today?</p>
+                </div>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="chat-quick-actions">
+                <button class="quick-btn" onclick="sendQuickMessage('What are common dog skin diseases?')">Common
+                    Diseases</button>
+                <button class="quick-btn"
+                    onclick="sendQuickMessage('How to prevent skin infections in dogs?')">Prevention Tips</button>
+                <button class="quick-btn" onclick="sendQuickMessage('When should I see a vet for skin issues?')">When to
+                    See Vet</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Best diet for dog skin health?')">Nutrition
+                    Tips</button>
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything about dog skin health..."
+                onkeypress="handleChatKeypress(event)">
+            <button class="chat-send" id="chatSendBtn" onclick="sendMessage()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

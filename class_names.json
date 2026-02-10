@@ -1,0 +1,19 @@
+{
+  "class_names": [
+    "Dermatitis",
+    "Fungal_infections",
+    "Healthy",
+    "Hypersensitivity",
+    "demodicosis",
+    "ringworm"
+  ],
+  "class_indices": {
+    "Dermatitis": 0,
+    "Fungal_infections": 1,
+    "Healthy": 2,
+    "Hypersensitivity": 3,
+    "demodicosis": 4,
+    "ringworm": 5
+  },
+  "img_size": 224
+}

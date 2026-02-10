@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawScan AI — Dog Skin Disease Detection</title>
+    <meta name="description"
+        content="AI-powered dog skin disease detection. Upload a photo of your dog's skin condition and get instant diagnosis with treatment recommendations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">PawScan <span class="logo-ai">AI</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                AI-Powered Diagnosis
+            </div>
+            <h1 class="hero-title">
+                Detect Dog Skin<br>
+                Diseases <span class="gradient-text">Instantly</span>
+            </h1>
+            <p class="hero-subtitle">
+                Upload a photo of your dog's skin condition and our deep learning model
+                will analyze it in seconds. Get accurate diagnosis with detailed treatment recommendations.
+            </p>
+
+            <!-- Upload Area -->
+            <div class="upload-section" id="uploadSection">
+                <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadForm">
+                    <div class="upload-zone" id="dropZone">
+                        <div class="upload-icon" id="uploadIcon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <img id="imagePreview" class="image-preview" style="display: none;" alt="Preview">
+                        <h3 class="upload-title" id="uploadTitle">Drop your image here</h3>
+                        <p class="upload-hint" id="uploadHint">or click to browse • JPG, PNG up to 16MB</p>
+                        <input type="file" name="image" id="imageInput" accept="image/*" hidden>
+                    </div>
+                    <button type="submit" class="btn-analyze" id="analyzeBtn" disabled>
+                        <span class="btn-icon">🔬</span>
+                        Analyze Image
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="hero-visual">
+            <div class="hero-card card-1">
+                <div class="card-icon">🔬</div>
+                <div class="card-label">Deep Learning</div>
+                <div class="card-desc">CNN-based analysis</div>
+            </div>
+            <div class="hero-card card-2">
+                <div class="card-icon">⚡</div>
+                <div class="card-label">Instant Results</div>
+                <div class="card-desc">Analysis in seconds</div>
+            </div>
+            <div class="hero-card card-3">
+                <div class="card-icon">💊</div>
+                <div class="card-label">Treatment Info</div>
+                <div class="card-desc">Detailed care plans</div>
+            </div>
+            <div class="hero-card card-4">
+                <div class="card-icon">🤖</div>
+                <div class="card-label">AI Chatbot</div>
+                <div class="card-desc">Ask anything</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three simple steps to diagnose your dog's skin condition</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">📸</div>
+                    <h3>Upload Photo</h3>
+                    <p>Take a clear photo of the affected skin area and upload it to our platform.</p>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="24" viewBox="0 0 40 24">
+                        <path d="M0 12h36M30 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">🧠</div>
+                    <h3>AI Analysis</h3>
+                    <p>Our trained deep learning model analyzes the image and identifies the condition.</p>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="24" viewBox="0 0 40 24">
+                        <path d="M0 12h36M30 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">📋</div>
+                    <h3>Get Results</h3>
+                    <p>Receive detailed diagnosis with treatment guidance and chat with our AI assistant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">About PawScan AI</h2>
+                    <p>PawScan AI uses state-of-the-art deep learning technology to help pet owners identify skin
+                        conditions in dogs. Our model is trained on thousands of images covering common canine
+                        dermatological conditions.</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Disease Classes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">AI</div>
+                            <div class="stat-label">Powered Chatbot</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Available</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-diseases">
+                    <h3>Conditions We Detect</h3>
+                    <div class="disease-list">
+                        <div class="disease-item">
+                            <span class="disease-dot dot-red"></span>
+                            Dermatitis
+                        </div>
+                        <div class="disease-item">
+                            <span class="disease-dot dot-purple"></span>
+                            Fungal Infections
+                        </div>
+                        <div class="disease-item">
+                            <span class="disease-dot dot-green"></span>
+                            Healthy Skin
+                        </div>
+                        <div class="disease-item">
+                            <span class="disease-dot dot-orange"></span>
+                            Hypersensitivity / Allergic Dermatosis
+                        </div>
+                        <div class="disease-item">
+                            <span class="disease-dot dot-red"></span>
+                            Demodicosis (Demodectic Mange)
+                        </div>
+                        <div class="disease-item">
+                            <span class="disease-dot dot-purple"></span>
+                            Ringworm (Dermatophytosis)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">🐾</span>
+                    <span class="logo-text">PawScan <span class="logo-ai">AI</span></span>
+                </div>
+                <p class="footer-note">⚠️ This tool is for educational purposes only. Always consult a licensed
+                    veterinarian for professional medical advice.</p>
+                <p class="footer-copy">&copy; 2026 PawScan AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
